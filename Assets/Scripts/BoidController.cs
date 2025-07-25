@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class BoidController : MonoBehaviour
@@ -35,7 +34,7 @@ public class BoidController : MonoBehaviour
 			center += (Vector2)boid.transform.position;
 		center /= Boids.Count;
 		
-		_Controlled.Direction = center - (Vector2)_Controlled.transform.position;
+		_Controlled.SetTargetDirection(center - (Vector2)_Controlled.transform.position);
 	}
 	
 	private void OnDestroy()
