@@ -12,7 +12,7 @@ public class BoidBodyRotator : MonoBehaviour
 
     private void LateUpdate()
     {
-        float signedAngle = Vector2.SignedAngle(_boid.Direction, Vector2.right);
-        _Body.transform.eulerAngles = Vector3.back * signedAngle;
+        float signedAngle = Vector2.SignedAngle(Vector2.right, _boid._Direction);
+        _Body.transform.eulerAngles = Vector3.forward * signedAngle;
     }
 }
