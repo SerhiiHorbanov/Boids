@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7017266e5737c0489cb2998c684f20b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 1
+  _Speed: 3
   _RotationSpeed: 400
   _TargetDirection: {x: 1, y: 0}
 --- !u!114 &4236084309773264092
@@ -63,6 +63,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Controlled: {fileID: 3635671142550633052}
+  _ViewDistance: 3
+  _CosineSimilarityForCohesion: 0.7
+  _CohesionStrength: 1
+  _AlignmentStrength: 1
+  _SeparationDistance: 0.3
+  _SeparationStrength: 3
 --- !u!114 &8373167490870447283
 MonoBehaviour:
   m_ObjectHideFlags: 0
