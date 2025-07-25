@@ -77,7 +77,6 @@ public class BoidController : MonoBehaviour
 			
 			avoidedBoids++;
 			centerOfAvoided += boid.Position;
-			print(boid.Position);
 		}
 		
 		if (boidsInView > 0)
