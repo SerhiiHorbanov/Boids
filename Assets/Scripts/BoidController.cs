@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BoidController : MonoBehaviour
@@ -101,5 +102,31 @@ public class BoidController : MonoBehaviour
 	private void OnDestroy()
 	{
 		SetControlled(null);
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Vector2 position = _Controlled.Position;
+		
+		Handles.color = Color.green;
+		Handles.DrawWireArc(position, Vector3.forward, Vector3.right, 360, _ViewDistance);
+		
+		Handles.color = Color.red;
+		Handles.DrawWireArc(position, Vector3.forward, Vector3.right, 360, _SeparationDistance);
+		
+		float offset = transform.eulerAngles.z * Mathf.Deg2Rad;
+		
+		float angle = Mathf.Acos(_CosineSimilarityForCohesion);
+		float x = Mathf.Cos(angle + offset) * _ViewDistance;
+		float y = Mathf.Sin(angle + offset) * _ViewDistance;
+		float x2 = Mathf.Cos(-angle + offset) * _ViewDistance;
+		float y2 = Mathf.Sin(-angle + offset) * _ViewDistance;
+		
+		Handles.color = Color.yellow;
+		Handles.DrawWireArc(position, Vector3.back, new(x, y, 0), angle * 2 * Mathf.Rad2Deg, _ViewDistance);
+		
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine(position, position + new Vector2(x, y));
+		Gizmos.DrawLine(position, position + new Vector2(x2, y2));
 	}
 }
